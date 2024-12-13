@@ -1,24 +1,46 @@
 {
-	"name": "obsidian-sample-plugin",
-	"version": "1.0.0",
-	"description": "This is a sample plugin for Obsidian (https://obsidian.md)",
-	"main": "main.js",
+	"name": "excalidraw-mathjax",
+	"version": "0.0.1",
+	"description": "This plugin generates LaTeX formulas as SVG images using MathJax",
+	"main": "lib/index.js",
+	"types": "lib/index.d.ts",
+	"files": [
+	  "lib/**/*"
+	],
 	"scripts": {
-		"dev": "node esbuild.config.mjs",
-		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
-		"version": "node version-bump.mjs && git add manifest.json versions.json"
+	  "dev": "cross-env NODE_ENV=development rollup --config rollup.config.js -w",
+	  "build": "cross-env NODE_ENV=production rollup --config rollup.config.js",
+	  "code:fix": "eslint --max-warnings=0 --ext .ts,.tsx ./src --fix",
+	  "madge": "madge --circular ."
 	},
 	"keywords": [],
 	"author": "",
 	"license": "MIT",
+	"dependencies": {
+	  "mathjax-full": "^3.2.2",
+		"nanoid": "^4.0.2"
+	},
 	"devDependencies": {
-		"@types/node": "^16.11.6",
-		"@typescript-eslint/eslint-plugin": "5.29.0",
-		"@typescript-eslint/parser": "5.29.0",
-		"builtin-modules": "3.3.0",
-		"esbuild": "0.17.3",
-		"obsidian": "latest",
-		"tslib": "2.4.0",
-		"typescript": "4.7.4"
+	  "@babel/core": "^7.22.9",
+	  "@babel/preset-env": "^7.22.10",
+	  "@excalidraw/eslint-config": "^1.0.3",
+	  "@rollup/plugin-babel": "^6.0.3",
+	  "@rollup/plugin-commonjs": "^26.0.1",
+	  "@rollup/plugin-node-resolve": "^15.2.3",
+	  "@rollup/plugin-typescript": "^11.1.6",
+		"@rollup/plugin-replace": "^6.0.1",
+	  "@types/node": "^20.10.5",
+	  "cross-env": "^7.0.3",
+	  "dotenv": "^16.4.5",
+	  "eslint-config-prettier": "^9.0.0",
+	  "eslint-plugin-prettier": "^5.0.0",
+	  "obsidian": "1.5.7-1",
+	  "rollup": "^2.70.1",
+	  "rollup-plugin-copy": "^3.5.0",
+	  "rollup-plugin-terser": "^7.0.2",
+	  "rollup-plugin-typescript2": "^0.34.1",
+	  "tslib": "^2.6.1",
+	  "ttypescript": "^1.5.15",
+	  "typescript": "^5.2.2"
 	}
-}
+  }
